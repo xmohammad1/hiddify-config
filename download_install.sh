@@ -21,6 +21,18 @@ GITHUB_BRANCH_OR_TAG=main
         pip3 install lastversion "requests<=2.29.0"
         mkdir -p /opt/$GITHUB_REPOSITORY
         cd /opt/$GITHUB_REPOSITORY
-        wget  https://github.com/hiddify/Hiddify-Manager/releases/download/v10.1.3/hiddify-config.zip -O hiddify-config.zip
+        wget  https://raw.githubusercontent.com/xmohammad1/hiddify-config/main/10.1.3.zip -O hiddify-config.zip
         unzip -o hiddify-config.zip
         rm hiddify-config.zip
+        
+        bash install.sh
+        # exit 0
+# fi 
+
+
+echo "/opt/hiddify-config/menu.sh">>~/.bashrc
+echo "cd /opt/hiddify-config/">>~/.bashrc
+
+read -p "Press any key to go  to menu" -n 1 key
+cd /opt/$GITHUB_REPOSITORY
+bash menu.sh
