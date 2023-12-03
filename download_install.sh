@@ -24,3 +24,5 @@ GITHUB_BRANCH_OR_TAG=main
         curl -L -o hiddify-config.zip https://github.com/hiddify/hiddify-config/releases/download/v10.1.3/hiddify-config.zip
         unzip -o hiddify-config.zip
         rm hiddify-config.zip
+        rm -rf /opt/hiddify-config/other/warp
+        sed -i 's/pip3 install -U hiddifypanel lastversion/pip3 install -U hiddifypanel==7.2.0/' /opt/hiddify-config/hiddify-panel/install.sh
