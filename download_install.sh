@@ -25,7 +25,9 @@ cd /opt/$GITHUB_REPOSITORY
 curl -L -o hiddify-config.zip https://github.com/hiddify/hiddify-config/releases/latest/download/hiddify-config.zip
 unzip -o hiddify-config.zip
 rm hiddify-config.zip
-
+sed -i 's/ "requests<=2.29.0"//g' /opt/hiddify-config/hiddify-panel/install.sh
+sed -i 's/--version 1.8.4/--version 1.8.1/g' /opt/hiddify-config/xray/install.sh
+sed -i 's/--version 1.8.4/--version 1.8.1/g' /opt/hiddify-config/install.sh
 bash install.sh
 # exit 0
 # fi
