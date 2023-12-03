@@ -26,3 +26,14 @@ GITHUB_BRANCH_OR_TAG=main
         rm hiddify-config.zip
         rm -rf /opt/hiddify-config/other/warp
         sed -i 's/pip3 install -U hiddifypanel lastversion/pip3 install -U hiddifypanel==7.2.0/' /opt/hiddify-config/hiddify-panel/install.sh
+        bash install.sh
+        # exit 0
+# fi 
+
+
+echo "/opt/hiddify-config/menu.sh">>~/.bashrc
+echo "cd /opt/hiddify-config/">>~/.bashrc
+
+read -p "Press any key to go  to menu" -n 1 key
+cd /opt/$GITHUB_REPOSITORY
+bash menu.sh
