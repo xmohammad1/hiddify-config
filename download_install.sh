@@ -28,14 +28,15 @@ rm hiddify-config.zip
 sed -i 's/ "requests<=2.29.0"//g' /opt/hiddify-config/hiddify-panel/install.sh
 sed -i 's/--version 1.8.4/--version 1.8.1/g' /opt/hiddify-config/xray/install.sh
 sed -i 's/--version 1.8.4/--version 1.8.1/g' /opt/hiddify-config/install.sh
+sed -i ':a;N;$!ba;s/"forbidden_sites",\n\s* "protocol": "blackhole"/"forbidden_sites", "protocol": "blackhole"/' /opt/hiddify-config/xray/configs/06_outbounds.json.template
 bash install.sh
 # exit 0
 # fi
 
 sed -i "s|/opt/hiddify-config/menu.sh||g" ~/.bashrc
 sed -i "s|cd /opt/hiddify-config/||g" ~/.bashrc
-echo "/opt/hiddify-config/menu.sh" >>~/.bashrc
-echo "cd /opt/hiddify-config/" >>~/.bashrc
+echo "/opt/hiddify-config/menu.sh">>~/.bashrc
+echo "cd /opt/hiddify-config/">>~/.bashrc
 
 read -p "Press any key to go  to menu" -n 1 key
 cd /opt/$GITHUB_REPOSITORY
