@@ -11,4 +11,4 @@ sudo apt update&&sudo apt install -y curl&& sudo bash -c "$(curl -Lfo- https://r
 if the panel didnt load, do apply configs from menu once!
 
 
-￼Enter
+this version don't have warp
