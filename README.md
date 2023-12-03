@@ -2,7 +2,7 @@ everything is from the hiddify project, this is simply a fork of version 10.5.50
 
 fix show version on ssh menue
 
-fix forbiden_site
+fix forbidden_sites
 
 fix not installing last version
 
