@@ -1,6 +1,6 @@
 everything is from the hiddify project, this is simply a fork of version 10.5.50
 
-fix show version on ssh menue
+fix show version on ssh menu
 
 fix forbidden_sites
 
