@@ -4,6 +4,10 @@ fix show version on ssh menue
 
 fix forbiden_site
 
+fix not installing last version
+
+install 1.8.1 instead of 1.8.4 (better speed as personal experience)
+
 To install hiddify version 8.8.2, run this command on a <b>clean os</b>
 
 ```
