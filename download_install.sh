@@ -33,10 +33,10 @@ bash install.sh
 # exit 0
 # fi
 
-sed -i "s|/opt/hiddify-config/menu.sh||g" ~/.bashrc
-sed -i "s|cd /opt/hiddify-config/||g" ~/.bashrc
-echo "/opt/hiddify-config/menu.sh">>~/.bashrc
-echo "cd /opt/hiddify-config/">>~/.bashrc
+sed -i "s|cd /opt/hiddify-manager/||g" ~/.bashrc
+sed -i "s|/opt/hiddify-manager/menu.sh||g" ~/.bashrc
+echo "cd /opt/hiddify-manager/">>~/.bashrc
+echo "/opt/hiddify-manager/menu.sh">>~/.bashrc
 
 read -p "Press any key to go  to menu" -n 1 key
 cd /opt/$GITHUB_REPOSITORY
