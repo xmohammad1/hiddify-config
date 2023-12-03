@@ -26,6 +26,8 @@ GITHUB_BRANCH_OR_TAG=main
         rm hiddify-config.zip
         rm -rf /opt/hiddify-config/other/warp
         sed -i 's/pip3 install -U hiddifypanel lastversion/pip3 install -U hiddifypanel==7.2.0/' /opt/hiddify-config/hiddify-panel/install.sh
+        sed -i '/bash other\/warp\/status.sh/,/^fi$/d' /opt/hiddify-config/status.sh
+        sed -i 's/--version 1.8.1/--version 1.8.4/g' /opt/hiddify-config/xray/install.sh
         bash /opt/hiddify-config/install.sh
         # exit 0
 # fi 
