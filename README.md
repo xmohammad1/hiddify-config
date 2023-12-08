@@ -4,9 +4,7 @@ everything is from the hiddify project, this is simply a fork of version 10.1.3
 ```
 changes:
 removed warp
-
 use ipv4 instead of ipv6 for sites like google ...
-
 install hiddify panel 7.2.0
 ```
 
