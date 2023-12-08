@@ -51,7 +51,6 @@
                     "domain:behance.net",
                     "domain:remini.com",
                     "domain:snapchat.com",
-                    
                     "geosite:tiktok",
                     "geosite:unity",
                     "geosite:reddit",
@@ -87,6 +86,13 @@
           "type": "field",
           "port": "0-65535",
           "outboundTag": "freedom"
+        },
+        {
+          "domain": [
+            "geosite:google"
+          ],
+          "outboundTag": "IPv4",
+          "type": "field"
         }
       ]
     }
