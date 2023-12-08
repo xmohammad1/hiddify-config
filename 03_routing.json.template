@@ -1,0 +1,95 @@
+{
+  "routing": {
+    // "domainStrategy": "AsIs",
+    "domainStrategy": "IPOnDemand",
+    "domainMatcher":"hybrid",
+    "settings": {
+      "rules": [
+        // {
+        //   "type": "field", 
+        //   "outboundTag": "freedom",
+        //   "domain":[
+        //     "www.google.com",
+        //     "cp.cloudflare.com"
+        //   ]
+        // },
+        { //DNS Cache rule
+          "type": "field", "port": 53, "network": "tcp,udp", "outboundTag": "DNS-Internal"
+        },
+        {
+            "type": "field", 
+            //"inboundTag": ["xtls"], 
+            "outboundTag": "forbidden_sites",
+            //ir "ip": ["geoip:ir"]
+            //zh "ip": ["geoip:cn"]
+            //other "ip": ["geoip:cn"]
+        },
+        {
+          "type": "field",
+          //"inboundTag": ["xtls"], 
+          "outboundTag": "forbidden_sites",
+          //ir "domain": ["tld-ir"]
+          //zh "domain": ["geosite:cn","tld-cn"] 
+          //other "ip": ["geoip:cn"]
+      },
+         {
+                "type":"field",
+                "outboundTag": "WARP",
+                "domain":[
+                    "geosite:google",
+                    "geosite:netflix",
+                    "geosite:spotify",
+                    "geosite:nvidia",
+                    "geosite:bytedance",
+                    "domain:ip.gs",
+                    "domain:kmplayer.com",
+                    "domain:ipinfo.io",
+                    "domain:openai.com",
+                    "domain:ai.com",
+                    "domain:freepik.com",
+                    "domain:developer.mozilla.org",
+                    "domain:behance.net",
+                    "domain:remini.com",
+                    "domain:snapchat.com",
+                    
+                    "geosite:tiktok",
+                    "geosite:unity",
+                    "geosite:reddit",
+                    "geosite:openai",
+                    "domain:myanimelist.net",
+                    "domain:sourcemod.net",
+                    "domain:alliedmods.net",
+                    "domain:pagespeed.web.dev",
+                    "domain:axieinfinity.com",
+                    "domain:clubhouse.com",
+                    "domain:omegle.com",
+                    "domain:alldatasheet.com",
+                    "domain:flaticon.com",
+                    "domain:xda-developers.com",
+                    "domain:giglio.com",
+                    "domain:lookmovie2.to",
+                    "domain:adbtc.top",
+                    "domain:homedepot.com",
+                    "domain:flutter.dev"
+                ]
+            },
+        
+        {
+          "inboundTag": ["api"], "outboundTag": "api", "type": "field"
+        },
+        {
+          "type": "field", "outboundTag": "blackhole", "ip": ["geoip:private"]
+        },
+        {// Block BitTorrent protocol
+          "type": "field", "outboundTag": "blackhole", "protocol": ["bittorrent"]
+        },
+        {
+          "type": "field",
+          "port": "0-65535",
+          "outboundTag": "freedom"
+        }
+      ]
+    }
+  }
+
+}
