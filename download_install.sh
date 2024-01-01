@@ -26,8 +26,8 @@ curl -L -o hiddify-config.zip https://github.com/hiddify/hiddify-config/releases
 unzip -o hiddify-config.zip
 rm hiddify-config.zip
 sed -i 's/ "requests<=2.29.0"//g' /opt/hiddify-config/hiddify-panel/install.sh
-sed -i 's/--version 1.8.4/--version 1.8.1/g' /opt/hiddify-config/xray/install.sh
-sed -i 's/--version 1.8.4/--version 1.8.1/g' /opt/hiddify-config/install.sh
+sed -i 's/--version 1.8.4/--version 1.8.6/g' /opt/hiddify-config/xray/install.sh
+sed -i 's/--version 1.8.4/--version 1.8.6/g' /opt/hiddify-config/install.sh
 sed -i ':a;N;$!ba;s/"forbidden_sites",\n\s* "protocol": "blackhole"/"forbidden_sites", "protocol": "blackhole"/' /opt/hiddify-config/xray/configs/06_outbounds.json.template
 bash install.sh
 # exit 0
