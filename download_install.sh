@@ -28,6 +28,7 @@ GITHUB_BRANCH_OR_TAG=main
         sed -i 's/pip3 install -U hiddifypanel lastversion/pip3 install -U hiddifypanel==7.2.0/' /opt/hiddify-config/hiddify-panel/install.sh
         sed -i '/bash other\/warp\/status.sh/,/^fi$/d' /opt/hiddify-config/status.sh
         sed -i '/runsh \$1.sh other\/warp/d' /opt/hiddify-config/install.sh
+        sudo sed -i 's/"address": "1.1.1.1"/"address": "127.0.0.53"/g' /opt/hiddify-config/xray/configs/06_outbounds.json.template
         bash /opt/hiddify-config/install.sh
         # exit 0
 # fi 
