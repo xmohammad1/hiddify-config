@@ -30,6 +30,7 @@ GITHUB_BRANCH_OR_TAG=main
         sed -i '/runsh \$1.sh other\/warp/d' /opt/hiddify-config/install.sh
         sudo sed -i 's/"address": "1.1.1.1"/"address": "127.0.0.53"/g' /opt/hiddify-config/xray/configs/06_outbounds.json.template
         sed -i '/sed -i "s|1.1.1.1|$dns_server|g"  configs\/06_outbounds.json/d' /opt/hiddify-config/xray/run.sh
+        sed -i 's/"8.8.8.8",/"8.8.4.4",/g' /opt/hiddify-config/xray/configs/02_dns.json.template
         bash /opt/hiddify-config/install.sh
         # exit 0
 # fi 
