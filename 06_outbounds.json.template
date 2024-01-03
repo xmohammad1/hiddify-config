@@ -66,7 +66,7 @@
     // },
     {
       "tag": "localhost-xtls", "protocol": "freedom", "settings": { "redirect": "127.0.0.1:400" }
-    }
+    },
     // {
     //   "tag": "localhost-tgproxy", "protocol": "freedom", "settings": {"redirect": "127.0.0.1:1001"}
     // },
@@ -76,5 +76,13 @@
     // {
     //   "tag": "other-sni", "protocol": "freedom", "settings": {"redirect": "127.0.0.1:445"}
     // },
+    {
+      // A DNS Cache can be setup and added here to imporve performance (the corresponding rule should be uncommented)
+      "tag": "DNS-Internal",
+      "protocol": "dns",
+      "settings": {
+        "address": "1.1.1.1",
+        "port": 53
+      }
   ]
 }
