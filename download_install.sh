@@ -8,8 +8,8 @@ if [[ " $@ " == *" release "* ]]; then
 fi
 
 mkdir -p /tmp/hiddify/
-sed -i 's/--version 1.8.4/--version 1.8.6/g' /opt/hiddify-config/xray/install.sh
-sed -i 's/--version 1.8.4/--version 1.8.6/g' /opt/hiddify-config/install.sh
+sed -i 's/--version 1.8.4/--version 1.8.7/g' /opt/hiddify-config/xray/install.sh
+sed -i 's/--version 1.8.4/--version 1.8.7/g' /opt/hiddify-config/install.sh
 curl -sL -o /tmp/hiddify/hiddify_installer.sh https://raw.githubusercontent.com/hiddify/Hiddify-Manager/main/common/hiddify_installer.sh
 curl -sL -o /tmp/hiddify/utils.sh https://raw.githubusercontent.com/hiddify/Hiddify-Manager/main/common/utils.sh
 chmod +x /tmp/hiddify/hiddify_installer.sh
