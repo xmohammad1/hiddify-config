@@ -39,5 +39,4 @@ sed -i "s|cd /opt/$GITHUB_REPOSITORY/||g" ~/.bashrc
 echo "/opt/$GITHUB_REPOSITORY/menu.sh" >>~/.bashrc
 echo "cd /opt/$GITHUB_REPOSITORY/" >>~/.bashrc
 
-read -p "Press any key to go  to menu" -n 1 key
 cd /opt/$GITHUB_REPOSITORY
