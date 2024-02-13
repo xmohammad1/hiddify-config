@@ -40,3 +40,5 @@ echo "/opt/$GITHUB_REPOSITORY/menu.sh" >>~/.bashrc
 echo "cd /opt/$GITHUB_REPOSITORY/" >>~/.bashrc
 
 cd /opt/$GITHUB_REPOSITORY
+read -p "Press any key to go  to menu" -n 1 key
+bash menu.sh
