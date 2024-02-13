@@ -25,8 +25,8 @@ unzip -o $GITHUB_REPOSITORY.zip
 rm $GITHUB_REPOSITORY.zip
 rm -f xray/configs/*.json
 rm -f singbox/configs/*.json
-sed -i 's/--version 1.8.4/--version 1.8.7/g' /opt/hiddify-config/xray/install.sh
-sed -i 's/--version 1.8.4/--version 1.8.7/g' /opt/hiddify-config/install.sh
+sed -i 's/--version 1.8.4/--version 1.8.1/g' /opt/hiddify-config/xray/install.sh
+sed -i 's/--version 1.8.4/--version 1.8.1/g' /opt/hiddify-config/install.sh
 source /opt/hiddify-config/common/utils.sh
 install_python
 pip install -U hiddifypanel
