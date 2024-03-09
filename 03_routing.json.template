@@ -48,7 +48,8 @@
         {
           "domain": [
             "geosite:google",
-            "geosite:netflix"
+            "geosite:netflix",
+            "geosite:meta"
           ],
           "outboundTag": "IPv4",
           "type": "field"
