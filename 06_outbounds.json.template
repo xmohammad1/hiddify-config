@@ -1,45 +1,98 @@
 {
-  "outbounds": [
-    {
-      {%if hconfigs["only_ipv4"]%}
-      "domainStrategy":"UseIPv4v6",
-      {%endif%}
-      "tag": "freedom",
-      "protocol": "freedom",
-      "settings": {
-
-      }
-    },
-    {
-      "protocol": "blackhole",
-      "tag": "blackhole"
-    },
-    {
-      "tag": "IPv4",
-      "protocol": "freedom",
-      "settings": {
-        "domainStrategy": "UseIPv4"
-      }
-    },
-    { //do not change the following line since it will be replaced.
-      "tag": "forbidden_sites",
-      "protocol": "{% if hconfigs['block_iran_sites'] %}blackhole{% else %}freedom{%endif%}"
-    },
-    {
-      "tag": "localhost-xtls",
-      "protocol": "freedom",
-      "settings": {
-        "redirect": "127.0.0.1:400"
-      }
-    },
-    {
-      // A DNS Cache can be setup and added here to imporve performance (the corresponding rule should be uncommented)
-      "tag": "DNS-Internal",
-      "protocol": "dns",
-      "settings": {
-        "address": "{{hconfigs['dns_server'] or '1.1.1.1'}}",
-        "port": 53
-      }
+  "routing": {
+    // "domainStrategy": "AsIs",
+    "domainStrategy": "IPOnDemand",
+    "domainMatcher":"hybrid",
+    "settings": {
+      "rules": [
+        {
+          "type":"field",
+          "outboundTag": "freedom",
+          "ip": [
+            "127.0.0.1"
+            //local_ips
+          ],
+          "port":"443,80,53"
+        },
+        { //DNS Cache rule
+          "type": "field", "port": 53, "network": "tcp,udp", "outboundTag": "DNS-Internal"
+        },
+        { //block quic
+          "type": "field", "port": 443, "network": "udp", "outboundTag": "blackhole"
+        },
+        {
+            "type": "field", 
+            //"inboundTag": ["xtls"], 
+            "outboundTag": "forbidden_sites",
+            //ir "ip": ["geoip:ir"]
+            //zh "ip": ["geoip:cn"]
+            //other "ip": ["geoip:cn"]
+        },
+        {
+          "type": "field",
+          //"inboundTag": ["xtls"], 
+          "outboundTag": "forbidden_sites",
+          //ir "domain": ["tld-ir"]
+          //zh "domain": ["geosite:cn","tld-cn"] 
+          //other "ip": ["geoip:cn"]
+      },
+         {
+                "type":"field",
+                "outboundTag": "IPv4",
+                "domain":[
+                    "geosite:google",
+                    "geosite:netflix",
+                    "geosite:spotify",
+                    "geosite:nvidia",
+                    "geosite:bytedance",
+                    "domain:ip.gs",
+                    "domain:kmplayer.com",
+                    "domain:ipinfo.io",
+                    "domain:openai.com",
+                    "domain:ai.com",
+                    "domain:freepik.com",
+                    "domain:developer.mozilla.org",
+                    "domain:behance.net",
+                    "domain:remini.com",
+                    "domain:snapchat.com",
+                    "geosite:tiktok",
+                    "geosite:unity",
+                    "geosite:reddit",
+                    "geosite:openai",
+                    "domain:myanimelist.net",
+                    "domain:sourcemod.net",
+                    "domain:alliedmods.net",
+                    "domain:pagespeed.web.dev",
+                    "domain:axieinfinity.com",
+                    "domain:clubhouse.com",
+                    "domain:omegle.com",
+                    "domain:alldatasheet.com",
+                    "domain:flaticon.com",
+                    "domain:xda-developers.com",
+                    "domain:giglio.com",
+                    "domain:lookmovie2.to",
+                    "domain:adbtc.top",
+                    "domain:homedepot.com",
+                    "domain:flutter.dev"
+                ]
+            },
+        
+        {
+          "inboundTag": ["api"], "outboundTag": "api", "type": "field"
+        },
+        {
+          "type": "field", "outboundTag": "blackhole", "ip": ["geoip:private"]
+        },
+        {// Block BitTorrent protocol
+          "type": "field", "outboundTag": "blackhole", "protocol": ["bittorrent"]
+        },
+        {
+          "type": "field",
+          "port": "0-65535",
+          "outboundTag": "freedom"
+        }
+      ]
     }
-  ]
+  }
+
 }
