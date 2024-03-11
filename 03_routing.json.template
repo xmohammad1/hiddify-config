@@ -45,15 +45,14 @@
         {// Block BitTorrent protocol
           "type": "field", "outboundTag": "blackhole", "protocol": ["bittorrent"]
         },
-        {
-          "domain": [
-            "geosite:google",
-            "geosite:netflix",
-            "geosite:meta"
-          ],
-          "outboundTag": "IPv4",
-          "type": "field"
-        },
+         {
+                "type":"field",
+                "outboundTag": "IPv4",
+                "domain":[
+                  "geosite:google",
+                  "geosite:netflix"
+                ]
+            },
         {
           "type": "field",
           "port": "0-65535",
