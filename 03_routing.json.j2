@@ -56,16 +56,13 @@
         },
          {
                 "type":"field",
-                "outboundTag": {% if hconfigs['warp_mode'] == 'disable' %}"IPv4"{% else %}"WARP"{% endif %},
+                "outboundTag": "IPv4",
                 "domain":[
                     "geosite:google",
                     "geosite:netflix",
                     "geosite:meta",
-
-                    "domain:ip.gs",
-                    {%for d in hconfigs.get('warp_sites','').split('\n')%}
-                    ,"domain:{{d.strip()}}"
-                    {%endfor%}
+                    "geosite:youtube",
+                    "geosite:spotify"
                 ]
             },
         
