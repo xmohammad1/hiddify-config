@@ -1,40 +1,25 @@
-#!/bin/sh
-if [ "$(id -u)" -ne 0 ]; then
-        echo 'This script must be run by root' >&2
-        exit 1
-fi
-export DEBIAN_FRONTEND=noninteractive
-if [ "$(id -u)" -ne 0 ]; then
-        echo 'This script must be run by root' >&2
-        exit 1
-fi
-
-echo "we are going to download needed files:)"
-GITHUB_REPOSITORY=hiddify-config
-GITHUB_USER=hiddify
-GITHUB_BRANCH_OR_TAG=main
-
-# if [ ! -d "/opt/$GITHUB_REPOSITORY" ];then
-        apt update
-        apt install -y wget python3-pip dialog unzip
-        pip3 install lastversion "requests<=2.29.0"
-        mkdir -p /opt/$GITHUB_REPOSITORY
-        cd /opt/$GITHUB_REPOSITORY
-        wget  https://github.com/hiddify/hiddify-config/releases/download/v10.1.3/hiddify-config.zip -O hiddify-config.zip
-        unzip -o hiddify-config.zip
-        rm hiddify-config.zip
-        rm -rf /opt/hiddify-config/other/warp
-        sed -i 's/pip3 install -U hiddifypanel lastversion/pip3 install -U hiddifypanel==7.2.0/' /opt/hiddify-config/hiddify-panel/install.sh
-        sed -i '/bash other\/warp\/status.sh/,/^fi$/d' /opt/hiddify-config/status.sh
-        sed -i '/runsh \$1.sh other\/warp/d' /opt/hiddify-config/install.sh
-        bash /opt/hiddify-config/install.sh
-        # exit 0
-# fi 
-
-
-echo "/opt/hiddify-config/menu.sh">>~/.bashrc
-echo "cd /opt/hiddify-config/">>~/.bashrc
-
-read -p "Press any key to go  to menu" -n 1 key
-cd /opt/$GITHUB_REPOSITORY
-bash menu.sh
+wget https://raw.githubusercontent.com/hiddify/Hiddify-Manager/v10.5.73/common/google-bbr.sh
+sysctl -w fs.file-max=51200
+sysctl -w net.core.rmem_max=67108864
+sysctl -w net.core.wmem_max=67108864
+sysctl -w net.core.rmem_default=65536
+sysctl -w net.core.wmem_default=65536
+sysctl -w net.core.netdev_max_backlog=250000
+sysctl -w net.core.somaxconn=4096
+sysctl -w net.ipv4.tcp_syncookies=1
+sysctl -w net.ipv4.tcp_tw_reuse=1
+sysctl -w net.ipv4.tcp_fin_timeout=30
+sysctl -w net.ipv4.tcp_keepalive_time=1200
+sysctl -w net.ipv4.tcp_max_syn_backlog=8192
+sysctl -w net.ipv4.tcp_max_tw_buckets=5000
+sysctl -w net.ipv4.tcp_fastopen=3
+sysctl -w net.ipv4.tcp_mem=24600 51200 102400
+sysctl -w net.ipv4.tcp_rmem=4096 87380 67108864
+sysctl -w net.ipv4.tcp_wmem=4096 65536 67108864
+sysctl -w net.ipv4.tcp_mtu_probing=1
+sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.netfilter.nf_conntrack_max=2097152
+sysctl -w net.netfilter.nf_conntrack_tcp_timeout_close_wait=60
+sysctl -w net.netfilter.nf_conntrack_tcp_timeout_fin_wait=60
+sysctl -w net.netfilter.nf_conntrack_tcp_timeout_time_wait=60
+bash google-bbr.sh
